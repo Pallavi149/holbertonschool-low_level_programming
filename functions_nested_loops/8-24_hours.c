@@ -1,6 +1,6 @@
 #include"main.h"
 /**
-*void jack_bauer - Prints every minute of the day
+*jack_bauer - Prints every minute of the day
 *
 *Return: Always return 0
 */
@@ -21,6 +21,5 @@ int h, m;
 		_putchar('\n');
 		}
 	}
-	return;
 }
 
