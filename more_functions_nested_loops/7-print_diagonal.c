@@ -14,7 +14,7 @@ int q = 0;
 
 	if (n > 0)
 	{
-	while (p <= n)
+	while (p < n)
 	{
 	q = 0;
 	while (q <= p)
