@@ -21,7 +21,7 @@ int p, q;
 	{
 	if (q < (p - 1))
 	{
-	_putchar('.');
+	_putchar(' ');
 	}
 	else
 	{
