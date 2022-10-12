@@ -5,6 +5,7 @@
 *@dest: destination string
 *@src: source string
 *@n: Byes of memory
+*Reurn: return the dest
 */
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
