@@ -8,10 +8,13 @@
 */
 unsigned int _strspn(char *str, char *accept)
 {
-	int i = 0, j = 0, len;
+	int i = 0, j = 0, len = 0;
 	unsigned int r = 0;
 
-	len = _strlen(accept);
+	while (accept[len] != '\0')
+	{
+		len = len + 1;
+	}
 
 	while (str[i] != '\0')
 	{
