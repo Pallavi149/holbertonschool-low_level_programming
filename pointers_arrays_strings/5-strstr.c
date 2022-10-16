@@ -2,7 +2,7 @@
 #include <stddef.h>
 
 /**
-*_strpbrk - locates the substring
+*_strstr - locates the substring
 *@haystack: string
 *@needle: list of characters
 *Return: the pointer or NULL
