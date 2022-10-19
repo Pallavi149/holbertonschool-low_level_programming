@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 {
 	int mul;
 
-	if (argc > 1)
+	if (argc > 2)
 	{
 		while (argc >= 3)
 		{
@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 		}
 		printf("%d\n", mul);
 	}
-	else
+	else 
 	{
 		printf("Error\n");
 	}
