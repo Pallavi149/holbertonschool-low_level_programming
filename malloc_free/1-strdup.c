@@ -19,6 +19,10 @@ char *_strdup(char *str)
 		strlen = strlen + 1;
 	}
 	ptr = (char *)malloc(strlen * sizeof(*ptr));
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
 	if (*str == '\0')
 	{
 		return (NULL);
@@ -28,10 +32,6 @@ char *_strdup(char *str)
 	{
 		ptr[i] = str[i];
 		i = i + 1;
-	}
-	if (ptr == NULL)
-	{
-		return (NULL);
 	}
 	return (ptr);
 }
