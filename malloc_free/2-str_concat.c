@@ -2,7 +2,6 @@
 #include "main.h"
 
 /**
- *
  * _strlen - string length
  * @str: string
  * Return: Returns length of a string, 0 if string is NULL
@@ -14,7 +13,7 @@ int _strlen(char *str)
 
 	if (str == NULL)
 	{
-		return 0;
+		return (0);
 	}
 
 	len = 0;
@@ -22,13 +21,15 @@ int _strlen(char *str)
 	{
 		len = len + 1;
 	}
-	return len;
+	return (len);
 }
 
 /**
- *
  * _strcpy - String copying
  * @str: string
+ * @len: string length
+ * @ptr: pointer to copy the string
+ * @startindex: start index
  */
 void _strcpy(char *str, int len, char *ptr, int startindex)
 {
