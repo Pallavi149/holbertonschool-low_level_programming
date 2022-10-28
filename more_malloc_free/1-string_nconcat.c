@@ -47,7 +47,7 @@ void _strcpy(char *str, int len, char *ptr, int startindex)
 }
 
 /**
- * *str_concat - concatenates two strings
+ * *string_nconcat - concatenates two strings
  * @s1: Fist String
  * @s2: Second string
  * @n: Number of bytes to copy
@@ -62,6 +62,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	len2 = _strlen(s2);
 
+	if (((int)n) <= len2)
+	{
+		len2 = n;
+	}
+
 	strlen = len1 + len2;
 	ptr = (char *)malloc((strlen + 1) * sizeof(*ptr));
 	if (ptr == NULL)
@@ -74,10 +79,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (ptr);
 	}
 	_strcpy(s1, len1, ptr, 0);
-	if (((int)n) <= len2)
-	{
-		len2 = n;
-	}
 	_strcpy(s2, len2, ptr, len1);
 	ptr[strlen] = '\0';
 	return (ptr);
