@@ -16,10 +16,10 @@ int *array_range(int min, int max)
 	}
 
 	size = (max - min) + 1;
-	ptr = (int *)malloc(size *sizeof(int));
+	ptr = (int *)malloc(size * sizeof(int));
 		if (ptr == NULL)
 		{
-			return(NULL);
+			return (NULL);
 		}
 		i = 0;
 		while (i < size)
