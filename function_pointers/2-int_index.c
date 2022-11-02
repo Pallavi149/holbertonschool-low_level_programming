@@ -30,11 +30,11 @@ int int_index(int *array, int size, int (*cmp)(int))
 	i = 0;
 	while (i < size)
 	{
-	return_cmp = cmp(array[i]);
-	if (return_cmp != 0)
-	{
+		(return_cmp = cmp(array[i]));
+		if (return_cmp != 0)
+		{
 		return (i);
-	}
+		}
 		i = i + 1;
 	}
 	return (-1);
