@@ -1,5 +1,43 @@
 #include<stdlib.h>
 #include"dog.h"
+
+/**
+ * *_strdup - returns a pointer to a newly allocated space in memory, which
+ * contains a copy of the string given as a parameter
+ * @str: Char Pointer
+ * Return: Returns a pointer which contains a copy of the string
+ *given as a parameter
+ */
+char *_strdup(char *str)
+{
+	char *ptr;
+	unsigned int i, strlen;
+
+	strlen = 0;
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+
+	while (str[strlen] != '\0')
+	{
+		strlen = strlen + 1;
+	}
+	strlen = strlen + 1;
+	ptr = (char *)malloc(strlen * sizeof(*ptr));
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (i < strlen)
+	{
+		ptr[i] = str[i];
+		i = i + 1;
+	}
+	return (ptr);
+}
+
 /**
  *new_dog - Creates a new dog
  *@name: Name of the dog
@@ -11,60 +49,28 @@
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *d;
-	char *cname, *cowner;
-	int i, j, nlen, olen;
-
-	nlen = 0;
-	i = 0;
-	while(name[i] != '\0')
-	{
-		nlen = nlen + 1;
-		i = i + 1;
-	}
-
-	cname = (char *)malloc(nlen * sizeof(char));
-	if (cname == NULL)
-	{
-		return (NULL);
-	}
-	i = 0;
-	while (name[i] != '\0')
-	{
-		cname[i] = name[i];
-		i = i + 1;
-	}
-
-	olen = 0;
-	j = 0;
-	while(owner[j] != '\0')
-	{
-		olen =olen + 1;
-		j = j + 1;
-	}
-	cowner = (char *)malloc(olen * sizeof(char));
-	if (cowner == NULL)
-	{
-		free(cname);
-		return (NULL);
-	}
-	j = 0;
-	while (owner[j] != '\0')
-	{
-		cowner[j] = owner[j];
-		j = j + 1;
-	}
 
 	d = malloc(sizeof(*d));
 
 	if (d == NULL)
 	{
-		free(cname);
-		free(cowner);
 		return (NULL);
 	}
 
-	d->name = cname;
 	d->age = age;
-	d->owner = cowner;
+	d->name = _strdup(name);
+	if (d->name == NULL)
+	{
+		free(d);
+		return (NULL);
+	}
+
+	d->owner = _strdup(owner);
+	if (d->owner == NULL)
+	{
+		free(d->name);
+		free(d);
+		return (NULL);
+	}
 	return (d);
 }
