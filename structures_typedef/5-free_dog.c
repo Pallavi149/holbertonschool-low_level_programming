@@ -2,7 +2,7 @@
 #include"dog.h"
 
 /**
- *new_dog - Creates a new dog
+ *free_dog -Free dog
  *@d: pointer to dog_t
  *Return: Nothing
  */
