@@ -27,14 +27,14 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		}
 		else
 		{
-		printf("%s", string);
+			printf("%s", string);
+		}
 		if (separator != NULL && i < n - 1)
 		{
 			printf("%s", separator);
 		}
 
 		i = i + 1;
-	}
 	}
 	printf("\n");
 	va_end(ap);
