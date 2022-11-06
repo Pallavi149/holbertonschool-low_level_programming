@@ -61,14 +61,8 @@ void print_all(const char * const format, ...)
 	va_list ap;
 	int j;
 
-	if (format == NULL)
-	{
-		printf("\n");
-		return;
-	}
-
 	j = 0;
-	while (format[j] != '\0')
+	while (format != NULL && format[j] != '\0')
 	{
 		j = j + 1;
 	}
