@@ -21,6 +21,7 @@ void _print_all(const char * const format, int j, va_list ap)
 		switch (format[i])
 		{
 		case 's':
+			sep = 1;
 			string = va_arg(ap, char*);
 			if (string == NULL)
 			{
@@ -28,7 +29,6 @@ void _print_all(const char * const format, int j, va_list ap)
 				break;
 			}
 			printf("%s", string);
-			sep = 1;
 			break;
 		case 'i':
 			printf("%d", va_arg(ap, int));
@@ -60,6 +60,12 @@ void print_all(const char * const format, ...)
 {
 	va_list ap;
 	int j;
+
+	if (format == NULL)
+	{
+		printf("\n");
+		return;
+	}
 
 	j = 0;
 	while (format[j] != '\0')
