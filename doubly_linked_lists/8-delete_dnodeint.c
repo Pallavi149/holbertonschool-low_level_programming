@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include"lists.h"
 /**
  * delete_dnodeint_at_index - deletes the node at index index of a list
@@ -35,7 +34,6 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	{
 		return (-1);
 	}
-	printf("i=%d", i);
 	/* Store pointer to the next of node to be deleted */
 	nextnode = currentnode->next->next;
 	free(currentnode->next);
