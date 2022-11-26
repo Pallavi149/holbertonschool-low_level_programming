@@ -22,7 +22,7 @@ void print_list(hash_node_t *head)
 
 void hash_table_print(const hash_table_t *ht)
 {
-	unsigned int i;
+	unsigned int i, printed_count;
 	hash_node_t *head;
 
 	if (ht == NULL)
@@ -30,6 +30,7 @@ void hash_table_print(const hash_table_t *ht)
 		return;
 	}
 	i = 0;
+	printed_count = 0;
 	printf("{");
 
 	while (i < ht->size)
@@ -40,7 +41,13 @@ void hash_table_print(const hash_table_t *ht)
 		{
 			continue;
 		}
+		if (printed_count > 1)
+		{
+			printf(", ");
+		}
+
 		print_list(head);
+		printed_count = printed_count + 1;
 	}
 	printf("}\n");
 }
