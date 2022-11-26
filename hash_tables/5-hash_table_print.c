@@ -2,14 +2,14 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_print - Prints a hash table
- * @ht: is the hash table
+ * print_list - Prints a linked list
+ * @head: is the head
  * Return: Nothing
  */
 
 void print_list(hash_node_t *head)
 {
-	while(head != NULL)
+	while (head != NULL)
 	{
 		printf("'%s': '%s'", head->key, head->value);
 		if (head->next != NULL)
@@ -20,6 +20,11 @@ void print_list(hash_node_t *head)
 	}
 }
 
+/**
+ * hash_table_print - Prints a hash table
+ * @ht: is the hash table
+ * Return: Nothing
+ */
 void hash_table_print(const hash_table_t *ht)
 {
 	unsigned int i, printed_count;
@@ -41,7 +46,7 @@ void hash_table_print(const hash_table_t *ht)
 		{
 			continue;
 		}
-		if (printed_count > 1)
+		if (printed_count > 0)
 		{
 			printf(", ");
 		}
