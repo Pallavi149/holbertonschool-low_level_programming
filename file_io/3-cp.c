@@ -18,25 +18,34 @@ void close_fd(int fd)
  * read_write - Reading a file and write into another
  * @fd_from: file descriptor of a from file
  * @fd_to: file descriptotr of a to file
+ * @file_from: file name of a from file
  * @file_to: file name of a to file
  * Return: Nothing
  */
-void read_write(int fd_from, int fd_to, char *file_to)
+void read_write(int fd_from, int fd_to, char *file_from,  char *file_to)
 {
 	char buffer[1024];
 	ssize_t read_txt;
 	ssize_t write_txt;
 
-	read_txt = read(fd_from, buffer, 1024);
-	while (read_txt > 0)
+	while (1)
 	{
+		read_txt = read(fd_from, buffer, 1024);
+		if (read_txt < 0)
+		{
+			fprintf(stderr, "Error: Can't read from file %s\n", file_from);
+			exit(98);
+		}
+		if (read_txt == 0)
+		{
+			break;
+		}
 		write_txt = write(fd_to, buffer, read_txt);
 		if (write_txt < 0)
 		{
 			fprintf(stderr, "Error: Can't write to %s\n", file_to);
 			exit(99);
 		}
-		read_txt = read(fd_from, buffer, 1024);
 	}
 }
 
@@ -69,7 +78,7 @@ void copy_file(char *file_from, char *file_to)
 		exit(99);
 	}
 
-	read_write(fd_from, fd_to, file_to);
+	read_write(fd_from, fd_to, file_from, file_to);
 	close_fd(fd_from);
 	close_fd(fd_to);
 }
