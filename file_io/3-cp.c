@@ -9,7 +9,7 @@ void close_fd(int fd)
 {
 	if (close(fd) < 0)
 	{
-		fprintf(stderr, "Can't close fd %d\n", fd);
+		fprintf(stderr, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -33,7 +33,7 @@ void read_write(int fd_from, int fd_to, char *file_to)
 		write_txt = write(fd_to, buffer, read_txt);
 		if (write_txt < 0)
 		{
-			fprintf(stderr, "Can't write to %s\n", file_to);
+			fprintf(stderr, "Error: Can't write to %s\n", file_to);
 			exit(99);
 		}
 		read_txt = read(fd_from, buffer, 1024);
@@ -58,14 +58,14 @@ void copy_file(char *file_from, char *file_to)
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from < 0)
 	{
-		fprintf(stderr, "Can't read from file %s\n", file_from);
+		fprintf(stderr, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 
 	fd_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd_to < 0)
 	{
-		fprintf(stderr, "Can't write to %s\n", file_to);
+		fprintf(stderr, "Error: Can't write to %s\n", file_to);
 		exit(99);
 	}
 
