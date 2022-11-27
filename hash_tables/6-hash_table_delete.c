@@ -3,7 +3,7 @@
 
 /**
  * delete_node - delete node from a list
- * @head: is the node
+ * @node: is the node
  * Return: Nothing
  */
 
