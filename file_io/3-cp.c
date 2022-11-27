@@ -1,4 +1,5 @@
 #include "main.h"
+#include <unistd.h>
 
 /**
  * close_fd - closes file descriptor
@@ -9,7 +10,7 @@ void close_fd(int fd)
 {
 	if (close(fd) < 0)
 	{
-		fprintf(stderr, "Error: Can't close fd %d\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -33,7 +34,7 @@ void read_write(int fd_from, int fd_to, char *file_from,  char *file_to)
 		read_txt = read(fd_from, buffer, 1024);
 		if (read_txt < 0)
 		{
-			fprintf(stderr, "Error: Can't read from file %s\n", file_from);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 			exit(98);
 		}
 		if (read_txt == 0)
@@ -43,7 +44,7 @@ void read_write(int fd_from, int fd_to, char *file_from,  char *file_to)
 		write_txt = write(fd_to, buffer, read_txt);
 		if (write_txt < 0)
 		{
-			fprintf(stderr, "Error: Can't write to %s\n", file_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			exit(99);
 		}
 	}
@@ -67,14 +68,14 @@ void copy_file(char *file_from, char *file_to)
 	fd_from = open(file_from, O_RDONLY);
 	if (fd_from < 0)
 	{
-		fprintf(stderr, "Error: Can't read from file %s\n", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 		exit(98);
 	}
 
 	fd_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd_to < 0)
 	{
-		fprintf(stderr, "Error: Can't write to %s\n", file_to);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 		exit(99);
 	}
 
@@ -94,7 +95,7 @@ int main(int argc, char *argv[])
 {
 	if (argc != 3)
 	{
-		fprintf(stderr, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	copy_file(argv[1], argv[2]);
